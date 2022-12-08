@@ -1,0 +1,106 @@
+
+<div class="container p-4 h-100">
+  <div class="row h-75 d-flex align-items-center">
+    <div class="col-12">
+      <h1>Editar reservas.</h1>
+    </div>
+
+    <!-- CALENDAR -->
+    <section id="calendary" class="section-padding col-md-8 border-top">
+      <div class="container">
+        <div class="row">
+        </div>
+        <div class="row g-4 calendar_container text-center">
+          <div class="col-10 col-lg-5 root">
+            <div class="calendar" id="calendar">
+
+            </div>
+          </div>
+          <div class="col-10 col-lg-5 root">
+            <div class="calendar calendar__time">
+              <div class="row">
+                <h5 class="calendar__time__title">Hora:</h5>
+              </div>
+              <div class="row mt-2 grid__timeOfDay">
+                <div class="col-12 timeOfDay" data-time="08:00:00">08:00 a.m</div>
+                <div class="col-12 timeOfDay" data-time="09:00:00">09:00 a.m</div>
+                <div class="col-12 timeOfDay" data-time="10:00:00">10:00 a.m</div>
+                <div class="col-12 timeOfDay" data-time="11:00:00">11:00 a.m</div>
+
+                <div class="col-12 timeOfDay" data-time="13:00:00">01:00 p.m</div>
+                <div class="col-12 timeOfDay" data-time="14:00:00">02:00 p.m</div>
+                <div class="col-12 timeOfDay" data-time="15:00:00">03:00 p.m</div>
+                <div class="col-12 timeOfDay" data-time="16:00:00">04:00 p.m</div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <div class="col-md-4 mx-auto">
+      <div class="card bg-withe border border-dark">
+        <div class="card-body">
+          <form action="/reservations/edit/{{reservation.id}}" method="POST">
+            <h1 class=" mt-3 h4">Editar reserva.</h1>
+            <p>Seleccionar una hora entre las 8:00am y las 5:00pm</p>
+
+            <label for="date_r">Seleccione la fecha.:</label>
+            <input type="date" name="date_r" id="date_r" class="form-control bg-white  mb-3"
+              value="{{dayFormat reservation.date_r}}" autofocus required />
+
+            <label for="time_r">Seleccione la hora:</label>
+            <input type="time" name="time_r" id="time_r" class="form-control bg-white  mb-3"
+              value="{{reservation.time_r}}" min="08:00" max="17:00" step="3600" required />
+            <div class="form-group mt-2">
+              <button class="btn btn-success btn-block">
+                Guardar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  {{!-- SCRIPTS MOMENT.JS --}}
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/es.js"></script>
+
+
+  <script src="/js/calendar.js"></script>
+
+  <script type="text/javascript">
+
+
+
+    let inputDate = document.querySelector('#date_r');
+    let inputTime = document.querySelector('#time_r');
+
+    let calendar = new Calendar('calendar');
+
+    calendar.getElement().addEventListener('change', e => {
+      inputDate.value = calendar.value().format('YYYY-MM-DD');
+    });
+
+
+
+    const timesOfDay = document.querySelectorAll('.timeOfDay');
+
+    const validateTime = (time) => {
+      const timeActive = document.querySelector('.time-active');
+      if (timeActive) {
+        timeActive.classList.remove('time-active');
+      }
+      time.classList.toggle('time-active');   
+      inputTime.value = time.dataset.time;
+    }
+
+    timesOfDay.forEach(time => {
+      time.addEventListener('click', () => {
+        validateTime(time);
+      })
+    });
+
+
+  </script>

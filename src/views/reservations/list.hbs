@@ -1,0 +1,48 @@
+<div class="container p-4">
+  <div class="row">
+    <div class="col-12">
+      <a class="btn btn-primary" href="/reservations/add">
+        Crear nueva reserva
+      </a>
+    </div>
+  </div>
+  <div class="table-responsive mt-2">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Usuario</th>
+          <th scope="col">Fecha</th>
+          <th scope="col">Hora</th>
+          <th scope="col">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each reservations}}
+        <tr>
+          <th scope="row"></th>
+          <td>{{fullname}}</td>
+          <td> {{dayFormat date_r }} </td>
+          <td>{{time_r}}</td>
+          <td>
+            <a class="btn btn-danger" href="/reservations/delete/{{id}}">
+              Borrar
+            </a>
+            <a class="btn btn-secondary" href="/reservations/edit/{{id}}">
+              Editar
+            </a>
+          </td>
+        </tr>
+        {{else}}
+        <tr>
+          <th class="mx-auto">
+            <p>Aún no hay Reservas guardadas.</p>
+            <a href="/reservations/add" class="text-success">¡Crear una!</a>
+          </th>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</div>
+

@@ -1,0 +1,127 @@
+*, *:before, *:after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-bg-calendar: #1b1e22;
+    --color-cell: #e3e3e3;
+    --color-cell-disabled: #424649;
+}
+
+.calendar_container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.root {
+    background: rgba(0, 0, 0, 0.89);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(1.5px);
+    -webkit-backdrop-filter: blur(1.5px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calendar {
+    padding: 20px 10px;
+    /* background-color: var(--color-bg-calendar); */
+    border-radius: 20px;
+    width: 100%;
+    max-width: 300px;
+    font-family: sans-serif;
+}
+
+.calendar__header {
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+.calendar .control {
+    color: white;
+    font-weight: bold;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0 5px;
+}
+
+.grid__timeOfDay {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.calendar__time {
+    color: white;
+    background-color: transparent;
+    border-radius: 10px;
+    box-shadow: 0 0 0 2px var(--color-bg-calendar) inset;
+}
+
+.calendar__time__title {
+    color: white;
+    background-color: transparent;
+}
+
+.grid__header, .grid__body {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.grid__header {
+    color: white;
+    margin-bottom: 20px;
+}
+
+.grid__body {
+    grid-auto-rows: 40px;
+    color: var(--color-cell);
+}
+
+.grid__cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid__cell--gd {
+    cursor: pointer;
+}
+
+.time-active {
+    color: white;
+    background-color: var(--c-brand);
+    border-radius: 10px;
+}
+
+.grid__cell--selectedToday {
+    color: var(--color-bg-calendar);
+    background-color: var(--c-brand);
+    background-color: white;
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: 0 0 0 2px var(--color-bg-calendar) inset;
+}
+
+.grid__cell--selected {
+    color: white;
+    background-color: var(--c-brand);
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.89) inset;
+}
+
+.grid__cell--disabled {
+    color: var(--color-cell-disabled);
+    cursor: not-allowed;
+}

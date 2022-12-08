@@ -1,0 +1,79 @@
+{{#if user}}
+<nav class="navbar navbar-expand-lg bg-white sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <img class="navbar-brand__img" src="/img/logo-dark.png" alt="">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Reservas
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/reservations">Lista de reservas</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/reservations/add">Crear reserva</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            {{user.fullname}}
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">{{user.email}}</a></li>
+            <li><a class="dropdown-item" href="/profile">Perfil</a></li>
+            <li><a class="dropdown-item" href="/logout">Cerrar sesión</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+{{else}}
+<nav class="navbar navbar-expand-lg bg-white sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <img class="navbar-brand__img" src="/img/logo-dark.png" alt="">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/#hero">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/#about">Nosotros</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/#services">Servicios</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/#calendar">Calendario</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/#portfolio">Portafolio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/#reviews">Reviews</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/signin">Login</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+{{/if}}
